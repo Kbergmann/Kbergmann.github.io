@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#2c2c2c">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Bergmann Carbonate Research Laboratory</title>
+  <style>
+    :root{
+      --bg: #2c2c2c;
+      --ink: #ffffff;
+      --muted: #cfcfcf;
+      --line: #444444;
+      --accent: #4a90e2;
+      --container: 1280px;
+      --pad: 20px;
+      --banner-h: clamp(140px, 26vh, 360px);
+      --focus: #86b7fe;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Header */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .header-content { position: relative;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand {
+      color: var(--ink);
+      font-weight: 400;
+      font-size: 2rem;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      text-align: center;
+    }
+    nav.nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav.nav a,
+    .gallery-nav-item,
+    .tab-btn {
+      border-radius: 8px;
+      padding: 10px 14px;
+      border: 1px solid transparent;
+      transition: background .25s ease, color .25s ease, transform .2s ease, border-color .25s ease;
+    }
+    nav.nav a {
+      color: #d9d9d9;
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+    nav.nav a:hover, nav.nav a:focus {
+      color: #fff;
+      background: var(--accent);
+      outline: none;
+    }
+    nav.nav a:focus-visible,
+    .gallery-nav-item:focus-visible,
+    .tab-btn:focus-visible,
+    .close:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .research-theme a,
+    .research-overview a,
+    #publications a {
+      color: #7ad2f3;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    
+    .research-theme a:hover,
+    .research-overview a:hover,
+    #publications a:hover {
+      color: #ffffff;
+    }
+
+    /* Banners */
+    .section-banner{
+      height: var(--banner-h);
+      background: #000 center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      isolation: isolate;
+    }
+    .section-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    .banner-inner {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 18px var(--pad) 22px;
+      color: #fff;
+    }
+    .section-banner h2{
+      margin: 0;
+      font-weight: 700;
+      font-size: clamp(1.25rem, 3.5vw, 2rem);
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+      text-transform: uppercase;
+    }
+
+    /* Content container */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 40px var(--pad) 60px;
+    }
+    .section-title {
+      margin: 0 0 20px;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #fff;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .section-description {
+      color: var(--muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* Gallery navigation */
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      padding: 24px var(--pad);
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .gallery-nav-item {
+      color: #cccccc;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid #555;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .gallery-nav-item:hover, .gallery-nav-item.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    :root { --header-h: 0px; --nav-h: 0px; }  /* set dynamically via JS */
+    
+    #gallery .section-title,
+    #gallery .section-description,
+    #gallery .gallery-grid {
+      scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 12px);
+    }
+
+
+    #gallery .gallery-nav {
+      position: sticky;
+      top: calc(var(--header-h) + 0px);
+      z-index: 950;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 2px 0 rgba(0,0,0,.35);
+    }
+
+    /* Gallery sections */
+    .gallery-section { display: none; }
+    .gallery-section.active { display: block; }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+    .gallery-item {
+      background: #3a3a3a;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.045); }
+
+    /* Overlays */
+    .overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+      color: white;
+      padding: 16px;
+      transform: translateY(100%);
+      transition: transform 0.25s ease;
+    }
+    .gallery-item:hover .overlay { transform: translateY(0); }
+    .overlay h3 { margin: 0 0 6px; font-size: 1.05rem; font-weight: 600; }
+    .overlay p  { margin: 0; font-size: 0.92rem; color: #cccccc; font-weight: 300; }
+
+    /* Teaching notes under subsection */
+    .subsection-note {
+      grid-column: 1 / -1;
+      margin: -4px 0 10px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 300;
+    }
+
+    /* People sections */
+    .people-gallery-section { margin-bottom: 60px; }
+
+    /* --- People hero: float layout hard caps --- */
+    .profile-hero { 
+      display: block !important;      /* kill any old grid/flex that might stretch things */
+      margin-bottom: 32px;
+    }
+    
+    .bio-with-float .bio-float {
+      float: left;
+      /* Never let the image exceed the container or get huge */
+      width: auto !important;
+      max-width: 600px !important;    /* adjust to taste: 320–400px is a good range */
+      height: auto !important;        /* keep aspect ratio */
+      box-sizing: border-box;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      margin: 0 24px 12px 0;          /* space to the right/below */
+      display: block;
+    }
+    
+    .bio-with-float::after {          /* clear the float so following sections don't jump */
+      content: "";
+      display: block;
+      clear: both;
+    }
+    
+    /* On narrow screens, stack the image above the text at full width */
+    @media (max-width: 720px) {
+      .bio-with-float .bio-float {
+        float: none;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 0 12px 0;
+      }
+    }
+
+    /* Lightbox (accessible) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox[aria-hidden="false"] { display: flex; }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+    .close {
+      position: absolute;
+      top: 30px; right: 40px;
+      color: white;
+      font-size: 2.2rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      line-height: 1;
+      padding: 2px 10px 6px;
+      background: transparent;
+    }
+    .close:hover { color: var(--accent); }
+
+    /* Publications */
+    .pubs-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px 0 30px;
+    }
+    .tab-btn {
+      border: 1px solid #555;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .tab-btn[aria-selected="true"] { background: var(--accent); border-color: var(--accent); }
+    .pubs-note { color: #c9c9c9; font-size: 0.95rem; margin: 8px 0 0; font-weight: 300; }
+    .pubs-lists ul { list-style: none; padding: 0; margin: 0; }
+    .pubs-lists li { margin: 0 0 15px 0; line-height: 1.5; font-weight: 300; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); background: #1a1a1a; color: #bdbdbd; }
+    footer .container { padding-top: 30px; padding-bottom: 40px; }
+
+    footer a {
+      color: #7ad2f3;              /* matches body link color */
+      text-decoration: underline;
+    }
+    footer a:hover,
+    footer a:focus {
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px)  {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-nav { flex-direction: column; align-items: center; gap: 12px; }
+      nav.nav { flex-direction: column; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+      .brand {
+      color: var(--ink);
+      font-weight: 400;
+      font-size: 2rem;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      text-align: center;
+    }
+    }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+  
+    /* Brand logo pinned to upper-left without affecting centering */
+    .brand-logo {
+      position: absolute;
+      left: var(--pad);
+      top: 0;
+      height: 82px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      padding: 4px 0;
+    }
+    @media (max-width: 768px) {
+      .brand-logo { height: 40px; }
+    }
+    /* Remove any left accents from section descriptions */
+    .section-description { border-left: none !important; padding-left: 0 !important; }
+
+    /* Remove blue accent box from research overview */
+    .research-overview {
+      border-left: none !important;
+    }
+
+    .sr-only {
+      position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+    }
+    
+    /* Tagline styling + responsive two-line behavior */
+    .brand { line-height: 1.15; }
+    .brand-tagline {
+      display: block;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      letter-spacing: .01em;
+      text-align: center;
+      margin-bottom: 10px;
+      word-spacing: .05em;
+      white-space: nowrap;         /* one line on wide screens */
+    }
+    @media (max-width: 1100px) {
+      .brand-tagline { white-space: normal; } /* allow wrap at <wbr> */
+    }
+
+    .gallery-grid.no-captions .overlay { display: none !important; }
+
+  </style>
+</head>
+<body>
+    <a class="sr-only" href="#main">Skip to main content</a>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-content">
+      <a href="#top" aria-label="Home">
+        <img src="assets/logos/logo_blue2.svg" alt="Bergmann Lab logo" class="brand-logo" height="48">
+      </a>
+        <a class="brand" href="#top">
+          <span class="brand-tagline">
+            Carbonates • Paleoclimate<wbr> • Clumped Isotopes
+          </span>
+        </a>
+        <h1 class="sr-only">Bergmann Carbonate Research Laboratory</h1>
+      <nav aria-label="Main navigation" class="nav">
+        <a href="#research">Research</a>
+        <a href="#viewer">Isotope Data Viewer</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#people">People</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Research -->
+    <section id="research">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/research.jpg')" role="img" aria-label="Research banner image">
+        <div class="banner-inner"><h2>Research</h2></div>
+      </div>
+      <div class="container" id="research-content">
+        <!-- The script can inject content here -->
+      </div>
+    </section>
+
+    <!-- Isotope Data Viewer -->
+    <section id="viewer">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/viewer.jpg')" role="img" aria-label="Isotope data viewer banner image">
+        <div class="banner-inner"><h2>Isotope Data Viewer</h2></div>
+      </div>
+      <div class="container">
+        <p class="section-description">Interactive tools for exploring our isotopic datasets from field and laboratory studies are coming soon!</p>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/gallery.jpg')" role="img" aria-label="Photo gallery banner image">
+        <div class="banner-inner"><h2>Gallery</h2></div>
+      </div>
+
+      <div class="gallery-nav" role="tablist" aria-label="Gallery category tabs">
+        <button class="gallery-nav-item active" data-section="field"    role="tab" aria-selected="true"  aria-controls="field-section">Field Work</button>
+        <button class="gallery-nav-item"        data-section="teaching" role="tab" aria-selected="false" aria-controls="teaching-section">Teaching</button>
+        <button class="gallery-nav-item"        data-section="outreach" role="tab" aria-selected="false" aria-controls="outreach-section">Outreach</button>
+        <button class="gallery-nav-item"        data-section="fun" role="tab" aria-selected="false" aria-controls="fun-section">Fun</button>
+        <button class="gallery-nav-item"        data-section="equipment" role="tab" aria-selected="false" aria-controls="equipment-section">Lab Equipment</button>
+        <button class="gallery-nav-item"        data-section="favorite_rocks" role="tab" aria-selected="false" aria-controls="favorite_rocks-section">Favorite Rocks</button>
+        <button class="gallery-nav-item"        data-section="sunrises" role="tab" aria-selected="false" aria-controls="sunrises-section">Sunrises &amp; Sunsets</button>
+      </div>
+
+      <div class="container">
+        <!-- Field Work Section -->
+        <div class="gallery-section active" id="field-section" role="tabpanel" tabindex="0" aria-labelledby="field-tab">
+          <h2 class="section-title">Field Work</h2>
+          <p class="section-description">Field sites that document pivotal intervals in Earth's history.</p>
+          <div class="gallery-grid" id="field-grid"></div>
+        </div>
+
+        <!-- Teaching Section -->
+        <div class="gallery-section" id="teaching-section" role="tabpanel" tabindex="0" aria-labelledby="teaching-tab">
+          <h2 class="section-title">Teaching</h2>
+          <p class="section-description"></p>
+          <div class="gallery-grid" id="teaching-grid"></div>
+        </div>
+
+        <!-- Outreach Section -->
+        <div class="gallery-section" id="outreach-section" role="tabpanel" tabindex="0" aria-labelledby="outreach-tab">
+          <h2 class="section-title">Outreach</h2>
+          <p class="section-description">Educational programs bringing research to local communities.</p>
+          <div class="gallery-grid" id="outreach-grid"></div>
+        </div>
+
+        <!-- Fun Section -->
+        <div class="gallery-section" id="fun-section" role="tabpanel" tabindex="0" aria-labelledby="fun-tab">
+          <h2 class="section-title">Fun</h2>
+          <p class="section-description">Lab life.</p>
+          <div class="gallery-grid" id="fun-grid"></div>
+        </div>
+
+        <!-- Equipment Section -->
+        <div class="gallery-section" id="equipment-section" role="tabpanel" tabindex="0" aria-labelledby="equipment-tab">
+          <h2 class="section-title">Lab Equipment</h2>
+          <p class="section-description">We often host visitors. Please reach out if you are interested in isotopic analysis, microscopy, or sample preparation.</p>
+          <div class="gallery-grid" id="equipment-grid"></div>
+        </div>
+
+        <!-- Favorite Rocks Section -->
+        <div class="gallery-section" id="favorite_rocks-section" role="tabpanel" tabindex="0" aria-labelledby="favorite_rocks-tab">
+          <h2 class="section-title">Favorite Rocks</h2>
+          <p class="section-description">These are some of my favorites of all time.</p>
+          <div class="gallery-grid" id="favorite_rocks-grid"></div>
+        </div>
+
+        <!-- Sunrises Section -->
+        <div class="gallery-section" id="sunrises-section" role="tabpanel" tabindex="0" aria-labelledby="sunrises-tab">
+          <h2 class="section-title">Sunrises and Sunsets</h2>
+          <p class="section-description">Captured during field work.</p>
+          <div class="gallery-grid" id="sunrises-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- People -->
+    <section id="people">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/people.jpg')" role="img" aria-label="People banner image">
+        <div class="banner-inner"><h2>People</h2></div>
+      </div>
+      <div class="container">
+        <!-- Profile hero: large photo + bio -->
+        <div class="profile-hero" aria-labelledby="pi-name">
+          <div class="bio bio-with-float">
+            <img class="bio-float"
+                 src="assets/gallery/profile/profile1.jpg"
+                 alt="Kristin Bergmann"
+                 loading="eager" decoding="async">
+            <h3 id="pi-name">Kristin Bergmann</h3>
+            <p>
+              I grew up in Maryland and the United Kingdom and studied Geology at Carleton College,
+              with a concentration in Environmental and Technological Studies. Field work first drew
+              me in during summers studying hydrologic change in the southern Sierra Nevada. Before
+              graduate school I worked with the Interstate Commission on the Potomac River Basin and
+              taught middle school science in New Jersey.
+            </p>
+            <p>
+              For my PhD at Caltech, I worked with John Grotzinger, John Eiler, and Woody Fischer, combining field
+              and lab studies on Neoproterozoic and Ordovician stratigraphy. I then joined the Harvard Society of Fellows as a junior fellow,
+              collaborating with Andy Knoll on early eukaryotic evolution. In 2015 I came to MIT’s Department of Earth, Atmospheric
+              and Planetary Sciences, where I now lead the Bergmann Carbonate Research Laboratory. My group investigates how carbonates
+              record Earth’s climate in deep time and the co-evolution of life and environments.
+            </p>
+            <p>
+              <strong>Selected honors:</strong> Packard Fellowship for Science and Engineering, GSA Biogeosciences
+              Early Career Award, and the Paul Grey Public Service Award from MIT’s PKG Center.
+            </p>
+          </div>
+        </div>
+        <!-- Current Lab Group -->
+        <div class="people-gallery-section">
+          <h2 class="section-title">Current Lab Group Members</h2>
+          <p class="section-description">Our current interdisciplinary research team with expertise in geochemistry, sedimentology, and paleobiology.</p>
+          <div class="gallery-grid" id="current-people-grid"></div>
+        </div>
+
+        <!-- Former Lab Group -->
+        <div class="people-gallery-section">
+          <h2 class="section-title">Former Lab Group Members</h2>
+          <p class="section-description">Alumni of our research group who have moved on to the next stages of their scientific and professional journeys.</p>
+          <div class="gallery-grid" id="former-people-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/publications.jpg')" role="img" aria-label="Publications banner image">
+        <div class="banner-inner"><h2>Publications</h2></div>
+      </div>
+      <div class="container">
+        <div class="pubs-controls" role="tablist" aria-label="Publications views">
+          <button id="pubsAbbrev" class="tab-btn" role="tab" aria-selected="true" aria-controls="pubsPanel">Abbreviated (2020–present)</button>
+          <button id="pubsFull" class="tab-btn" role="tab" aria-selected="false" aria-controls="pubsPanel">Full list</button>
+        </div>
+        <p class="pubs-note">Bold = researcher in my group; [‡] = joint first author.</p>
+
+        <div id="pubsPanel" class="pubs-lists" role="tabpanel" tabindex="0">
+          <ul id="pubsList"></ul>
+          <div id="reposWrap" style="display:none; margin-top:30px;">
+            <h3 class="section-title" style="font-size:1.4rem; margin-top:15px;">Data Repositories</h3>
+            <ul id="reposList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/contact2.png')" role="img" aria-label="Contact banner image">
+        <div class="banner-inner"><h2>Contact</h2></div>
+      </div>
+      <div class="container">
+        <p class="section-description">MIT EAPS • 1014 • Building 54 • 77 Massachusetts Avenue • Cambridge, MA 02139 • kdberg@mit.edu</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image viewer">
+    <button class="close" id="lightboxClose" aria-label="Close image viewer" type="button">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+    <footer>
+      <div class="container">
+        <small>© <span id="y"></span> Bergmann Carbonate Research Laboratory ·
+          <a href="https://web.mit.edu/accessibility/" rel="noopener">Accessibility</a>
+        </small>
+        <noscript><div style="margin-top:8px;color:#cfcfcf">Note: Enable JavaScript to view galleries and publications.</div></noscript>
+      </div>
+    </footer>
+
+  <!-- Research script (unchanged) -->
+  <script src="assets/js/section_research.js" defer></script>
+  <!-- Publications script (unchanged) -->
+  <script src="assets/js/publications.global.js?v=3" defer></script>
+  <!-- New: data-driven gallery source (expects window.GALLERY_DATA + window.SUBSECTION_LABELS) -->
+  <script src="assets/js/gallery.data.js" defer></script>
+
+  <script>
+  // Utilities
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => document.querySelectorAll(sel);
+
+  // Year
+  document.addEventListener('DOMContentLoaded', () => {
+    const y = document.getElementById('y');
+    if (y) y.textContent = new Date().getFullYear();
+  });
+
+  // Subsection labels (fallback if not provided by gallery.data.js)
+    window.SUBSECTION_LABELS = Object.assign({
+      oman: 'Oman',
+      svalbard: 'Svalbard',
+      north_america: 'North America',
+      sed_field: '12.110 A & B Sedimentary Environments and Field Sedimentology',
+      undergrad_courses: '12.12 Nature’s Sandbox: The History of Ancient Environments, Climate, and Life',
+      field_camp: '12.115 Field Geology',
+      deaps: 'DEAPS: Discovering the natural world',
+      crosby_sicily: 'EAPS Departmental Field Trip to Sicily',
+      crosby_newfoundland: 'EAPS Departmental Field Trip to Newfoundland',
+      outreach: 'Outreach',
+      equipment: 'Lab Equipment',
+      favorite_rocks: 'Favorite Rocks',
+      fun: 'Fun',
+      suns: 'Sunrises and Sunsets',
+      current_people: '',
+      former_people: '',
+    }, window.SUBSECTION_LABELS || {});
+
+  // Teaching subsection notes (short course descriptions under the subsection header)
+  // Populate/modify these strings as you like; empty strings will hide the note.
+  const SUBSECTION_NOTES = {
+    sed_field: 'Covers the fundamentals of sedimentation from grain properties to basin-scale analysis, with emphasis on depositional processes and paleoenvironments. Lectures explore how grain textures, sediment transport, and sedimentary structures record depositional environments and their evolution through time. A required spring field trip provides first-hand experience in stratigraphic logging, mapping, and interpreting successions. Field sites vary annually and span Precambrian through modern systems.',
+    undergrad_courses: 'A series of field adventures surveying Earth’s history and landscapes through online and in-person instruction, including virtual trips to Svalbard, Death Valley, and northern Minnesota. Students investigate how surface environments and life interact, and examine major environmental transitions',
+    field_camp: 'Introduces modern approaches to geological field study through an intensive off-campus experience. Students practice mapping and interpretation of bedrock and surficial deposits using topographic and photographic base maps.',
+    deaps: 'The annual Discover Earth, Atmospheric, and Planetary Sciences (DEAPS) pre-orientation program gives incoming first-year students the opportunity to explore the earth sciences both in the classroom and out in the field.',
+    crosby_sicily: 'Explores Sicily’s landscapes from coastal outcrops to volcanic interiors, emphasizing processes that shaped the island through time, including the spectacular deposits recording the Messinian Salinity Crisis.',
+    crosby_newfoundland: 'Explores Newfoundland’s coastlines and interior terrains, focusing on the assembly of North America and the supercontinent Pangea. Students examine successions that preserve both tectonic transitions and the rich record of Ediacaran fossils.',
+  };
+
+    function imgExists(src) {
+      return new Promise((resolve) => {
+        const i = new Image();
+        i.onload = () => resolve(true);
+        i.onerror = () => resolve(false);
+        i.src = src;
+      });
+    }
+
+  // Gallery renderer using window.GALLERY_DATA
+    async function renderGalleryFromData(categoryKey, containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+    
+      const items = (window.GALLERY_DATA && window.GALLERY_DATA[categoryKey]) ? window.GALLERY_DATA[categoryKey] : [];
+      if (!items.length) { 
+        // nothing listed for this category — hide entire section
+        const section = container.closest('.gallery-section');
+        if (section) section.style.display = 'none';
+        return;
+      }
+    
+      // Group items by subsection
+      const bySub = items.reduce((acc, it) => {
+        const key = it.subsection || 'misc';
+        (acc[key] ||= []).push(it);
+        return acc;
+      }, {});
+    
+      let html = '';
+    
+      for (const [subKey, list] of Object.entries(bySub)) {
+        // Filter this subsection down to only images that actually exist
+        const okMask = await Promise.all(list.map(it => imgExists(it.src)));
+        const filtered = list.filter((_, i) => okMask[i]);
+    
+        // If nothing in this subsection exists, skip rendering this subsection entirely
+        if (!filtered.length) continue;
+    
+        const label = window.SUBSECTION_LABELS[subKey] || subKey;
+        const isPeople = (categoryKey === 'current_people' || categoryKey === 'former_people');
+    
+        // Only render subsection headers for non-people categories, and never for the top-level key
+        if (!isPeople && subKey !== categoryKey && label && label.trim()) {
+          html += `
+            <div style="grid-column: 1 / -1; margin: 2rem 0 0.5rem; font-size: 1.2rem; color: var(--accent); font-weight: 600; border-bottom: 1px solid var(--accent); padding-bottom: 0.5rem;">
+              ${label}
+            </div>
+          `;
+        }
+    
+        // Optional note for teaching subsections
+        if (categoryKey === 'teaching') {
+          const note = SUBSECTION_NOTES[subKey];
+          if (note) {
+            html += `<div class="subsection-note">${escapeHtml(note)}</div>`;
+          }
+        }
+    
+        // Cards — now using filtered list only
+        html += filtered.map(it => `
+          <div class="gallery-item" tabindex="0" role="button" aria-label="Open image: ${escapeHtml(it.title || '')}" data-src="${it.src}">
+            <img src="${it.src}" alt="${escapeHtml(it.title || 'Gallery image')}" loading="lazy" decoding="async">
+            <div class="overlay">
+              <h3>${escapeHtml(it.title || '')}</h3>
+              <p>
+                ${escapeHtml(it.desc || '')}
+                ${it.location ? 
+                  ` — <span style="opacity:.8">${categoryKey === 'former_people' ? 'now at ' : ''}${escapeHtml(it.location)}</span>` 
+                  : ''}
+              </p>
+            </div>
+          </div>
+        `).join('');
+      }
+    
+      // If after filtering every subsection is empty, hide the whole section
+      if (!html.trim()) {
+        const section = container.closest('.gallery-section');
+        if (section) section.style.display = 'none';
+        container.innerHTML = '';
+        return;
+      }
+    
+      container.innerHTML = html;
+    
+      // Bind click + keyboard open
+      container.querySelectorAll('.gallery-item').forEach(card => {
+        card.addEventListener('click', () => openLightbox(card.getAttribute('data-src'), card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(card.getAttribute('data-src'), card);
+          }
+        });
+      });
+    }
+
+    function handleMissingFormerPhotos() {
+      const grid = document.getElementById('former-people-grid');
+      if (!grid) return;
+    
+      const missing = [];
+      let pending = 0;
+    
+      function renderMissingList(list) {
+        if (!list.length) return;
+        const wrap = document.createElement('div');
+        wrap.style.gridColumn = '1 / -1';
+        wrap.style.textAlign = 'center';
+        wrap.style.marginTop = '10px';
+        wrap.innerHTML = `
+          <div style="opacity:.85; margin-top:4px;">other former lab members:</div>
+          <div style="margin-top:8px; letter-spacing:.2px;">
+            ${list.map(n => escapeHtml(n)).join(' &bull; ')}
+          </div>`;
+        grid.appendChild(wrap);
+      }
+    
+      // Watch every image in the Former People grid
+      grid.querySelectorAll('.gallery-item img').forEach(img => {
+        pending++;
+        const title =
+          img.closest('.gallery-item')?.querySelector('.overlay h3')?.textContent ||
+          img.alt || '';
+    
+        img.addEventListener('error', () => {
+          missing.push(title);
+          const card = img.closest('.gallery-item');
+          if (card) card.remove();
+          if (--pending === 0) renderMissingList(missing);
+        });
+    
+        img.addEventListener('load', () => {
+          if (--pending === 0) renderMissingList(missing);
+        });
+      });
+    
+      // If there were no images at all, nothing to do
+    }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, s => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    })[s]);
+  }
+
+  // Lightbox with focus trapping & Esc close
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightboxClose');
+  let lastTrigger = null;
+
+  function openLightbox(imageSrc, triggerEl) {
+    lastTrigger = triggerEl || document.activeElement;
+    lightboxImg.src = imageSrc;
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightbox.style.display = 'flex';
+    lightboxClose.focus();
+    document.addEventListener('keydown', onLightboxKey);
+  }
+
+  function closeLightbox() {
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+    document.removeEventListener('keydown', onLightboxKey);
+    if (lastTrigger && typeof lastTrigger.focus === 'function') {
+      lastTrigger.focus();
+    }
+  }
+
+  function onLightboxKey(e) {
+    if (e.key === 'Escape') closeLightbox();
+    // Simple focus trap: if focus leaves, bring back to close button
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      lightboxClose.focus();
+    }
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  // Gallery navigation
+    function scrollToGalleryTabs() {
+      const header = document.querySelector('.site-header');
+      const nav = document.querySelector('#gallery .gallery-nav');
+      if (!nav) return;
+      const top = nav.getBoundingClientRect().top + window.scrollY - (header?.offsetHeight || 0);
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    function scrollToSection(sectionEl) {
+      const header = document.querySelector('.site-header');
+      const nav = document.querySelector('#gallery .gallery-nav');
+      const offset = (header?.offsetHeight || 0) + (nav?.offsetHeight || 0);
+      const top = sectionEl.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+  const galleryNavItems = $$('.gallery-nav-item');
+  const gallerySections = $$('.gallery-section');
+    
+    galleryNavItems.forEach(item => {
+      item.addEventListener('click', () => {
+        galleryNavItems.forEach(nav => { nav.classList.remove('active'); nav.setAttribute('aria-selected', 'false'); });
+        item.classList.add('active');
+        item.setAttribute('aria-selected', 'true');
+        gallerySections.forEach(section => section.classList.remove('active'));
+        const sectionId = item.dataset.section + '-section';
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) { targetSection.classList.add('active'); targetSection.focus(); }
+        if (targetSection) scrollToSection(targetSection);
+      });
+    });
+
+
+  // Smooth in-page nav offset for sticky header
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const headerHeight = document.querySelector('.site-header').offsetHeight;
+        const bannerHeight = target.querySelector('.section-banner')?.offsetHeight || 0;
+        const targetPosition = target.offsetTop + bannerHeight;
+        window.scrollTo({ top: targetPosition - headerHeight, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Publications controls (unchanged behavior)
+  const btnAbbrev = document.getElementById('pubsAbbrev');
+  const btnFull = document.getElementById('pubsFull');
+  const reposWrap = document.getElementById('reposWrap');
+
+  function setTab(abbrev = true) {
+    btnAbbrev.setAttribute('aria-selected', String(abbrev));
+    btnFull.setAttribute('aria-selected', String(!abbrev));
+
+    if (window.PUBS && typeof PUBS.renderPublications === 'function') {
+      PUBS.renderPublications('#pubsList', { abbreviated: abbrev });
+    }
+
+    if (!abbrev) {
+      reposWrap.style.display = '';
+      if (window.PUBS && typeof PUBS.renderRepositories === 'function') {
+        PUBS.renderRepositories('#reposList');
+      }
+    } else {
+      reposWrap.style.display = 'none';
+      const rl = document.getElementById('reposList');
+      if (rl) rl.innerHTML = '';
+    }
+  }
+
+  btnAbbrev?.addEventListener('click', () => setTab(true));
+  btnFull?.addEventListener('click', () => setTab(false));
+
+  // Initialize research section (unchanged)
+  function initializeResearch() {
+    if (window.RESEARCH_SECTION && typeof window.RESEARCH_SECTION.inject === 'function') {
+        window.RESEARCH_SECTION.inject('#research-content');
+    }
+  }
+
+  function initializeGalleries() {
+    renderGalleryFromData('field',           'field-grid');
+    renderGalleryFromData('teaching',        'teaching-grid');
+    renderGalleryFromData('outreach',        'outreach-grid');
+    renderGalleryFromData('equipment',       'equipment-grid');
+    renderGalleryFromData('suns',        'sunrises-grid');
+    renderGalleryFromData('favorite_rocks',  'favorite_rocks-grid');
+    renderGalleryFromData('fun',             'fun-grid');
+    renderGalleryFromData('current_people',  'current-people-grid');
+    renderGalleryFromData('former_people',   'former-people-grid');
+    handleMissingFormerPhotos();
+  }
+
+  function initializeAll() {
+    setTab(true);
+    initializeGalleries();
+    initializeResearch();
+  }
+
+    // Keep --header-h in sync with the sticky header height
+    function setHeaderHeightVar() {
+      const header = document.querySelector('.site-header');
+      const galleryNav = document.querySelector('#gallery .gallery-nav');
+      const h = header ? header.offsetHeight : 0;
+      const nh = galleryNav ? galleryNav.offsetHeight : 0;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+      document.documentElement.style.setProperty('--nav-h', nh + 'px');   // NEW
+    }
+    setHeaderHeightVar();
+    window.addEventListener('resize', setHeaderHeightVar);
+    // If fonts load and change layout, run once more after DOM paint
+    window.requestAnimationFrame(setHeaderHeightVar);
+
+  // Wait for gallery.data.js to load (defer ensures order, but guard anyway)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAll);
+  } else {
+    initializeAll();
+  }
+
+  // Expose for debugging if needed
+  window.openLightbox = openLightbox;
+  </script>
+</body>
+</html>
