@@ -312,6 +312,22 @@
       }
     }
 
+    /* Reserve space for the pinned logo only when the header gets tight */
+    @media (max-width: 1150px) {
+      header.site-header {
+        padding: calc(20px + var(--logo-h)) 0 20px;
+      }
+    }
+    
+    /* On phones/tablets shrink the reserved logo height */
+    @media (max-width: 768px) {
+      :root { --logo-h: 44px; }  /* ~40px logo + breathing room */
+    }
+
+    @media (max-width: 950px) {
+      .brand-tagline { font-size: clamp(1.15rem, 3.5vw, 1.8rem); }
+    }
+
     /* Lightbox (accessible) */
     .lightbox {
       display: none;
@@ -342,6 +358,31 @@
       background: transparent;
     }
     .close:hover { color: var(--accent); }
+
+    /* Lightbox navigation buttons */
+    .lightbox .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      line-height: 1;
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      padding: 6px 14px 10px;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .lightbox .nav:hover { background: rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.45); }
+    .lightbox .nav.prev { left: 28px; }
+    .lightbox .nav.next { right: 28px; }
+    
+    @media (max-width: 600px) {
+      .lightbox .nav { font-size: 2.2rem; }
+      .lightbox .nav.prev { left: 14px; }
+      .lightbox .nav.next { right: 14px; }
+    }
 
     /* Publications */
     .pubs-controls {
@@ -431,8 +472,17 @@
       word-spacing: .05em;
       white-space: nowrap;         /* one line on wide screens */
     }
-    @media (max-width: 1100px) {
+    @media (max-width: 1350px) {
       .brand-tagline { white-space: normal; } /* allow wrap at <wbr> */
+    }
+
+    /* default: one line on wide screens */
+    .brand-tagline .break-after-paleo { display: inline; }
+    
+    /* when space gets tight, force the second half onto a new line */
+    @media (max-width: 1100px) {
+      .brand-tagline { white-space: normal; }         /* allow wrapping */
+      .brand-tagline .break-after-paleo { display: block; margin-top: 2px; }
     }
 
     .gallery-grid.no-captions .overlay { display: none !important; }
@@ -449,16 +499,17 @@
       </a>
         <a class="brand" href="#top">
           <span class="brand-tagline">
-            Carbonates • Paleoclimate<wbr> • Clumped Isotopes
+              Carbonates • Paleoclimate<span class="break-after-paleo"> • Clumped Isotopes</span>
           </span>
         </a>
         <h1 class="sr-only">Bergmann Carbonate Research Laboratory</h1>
       <nav aria-label="Main navigation" class="nav">
         <a href="#research">Research</a>
         <a href="#viewer">Isotope Data Viewer</a>
-        <a href="#gallery">Gallery</a>
+        <a href="#facilities">Facilities</a>
         <a href="#people">People</a>
         <a href="#publications">Publications</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -485,71 +536,16 @@
       </div>
     </section>
 
-    <!-- Gallery -->
-    <section id="gallery">
-      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/gallery.jpg')" role="img" aria-label="Photo gallery banner image">
-        <div class="banner-inner"><h2>Gallery</h2></div>
+    <!-- Facilities -->
+    <section id="facilities">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/facilities.jpg')" role="img" aria-label="Facilities banner image">
+        <div class="banner-inner"><h2>Facilities</h2></div>
       </div>
-
-      <div class="gallery-nav" role="tablist" aria-label="Gallery category tabs">
-        <button class="gallery-nav-item active" data-section="field"    role="tab" aria-selected="true"  aria-controls="field-section">Field Work</button>
-        <button class="gallery-nav-item"        data-section="teaching" role="tab" aria-selected="false" aria-controls="teaching-section">Teaching</button>
-        <button class="gallery-nav-item"        data-section="outreach" role="tab" aria-selected="false" aria-controls="outreach-section">Outreach</button>
-        <button class="gallery-nav-item"        data-section="fun" role="tab" aria-selected="false" aria-controls="fun-section">Fun</button>
-        <button class="gallery-nav-item"        data-section="equipment" role="tab" aria-selected="false" aria-controls="equipment-section">Lab Equipment</button>
-        <button class="gallery-nav-item"        data-section="favorite_rocks" role="tab" aria-selected="false" aria-controls="favorite_rocks-section">Favorite Rocks</button>
-        <button class="gallery-nav-item"        data-section="sunrises" role="tab" aria-selected="false" aria-controls="sunrises-section">Sunrises &amp; Sunsets</button>
-      </div>
-
       <div class="container">
-        <!-- Field Work Section -->
-        <div class="gallery-section active" id="field-section" role="tabpanel" tabindex="0" aria-labelledby="field-tab">
-          <h2 class="section-title">Field Work</h2>
-          <p class="section-description">Field sites that document pivotal intervals in Earth's history.</p>
-          <div class="gallery-grid" id="field-grid"></div>
-        </div>
-
-        <!-- Teaching Section -->
-        <div class="gallery-section" id="teaching-section" role="tabpanel" tabindex="0" aria-labelledby="teaching-tab">
-          <h2 class="section-title">Teaching</h2>
-          <p class="section-description"></p>
-          <div class="gallery-grid" id="teaching-grid"></div>
-        </div>
-
-        <!-- Outreach Section -->
-        <div class="gallery-section" id="outreach-section" role="tabpanel" tabindex="0" aria-labelledby="outreach-tab">
-          <h2 class="section-title">Outreach</h2>
-          <p class="section-description">Educational programs bringing research to local communities.</p>
-          <div class="gallery-grid" id="outreach-grid"></div>
-        </div>
-
-        <!-- Fun Section -->
-        <div class="gallery-section" id="fun-section" role="tabpanel" tabindex="0" aria-labelledby="fun-tab">
-          <h2 class="section-title">Fun</h2>
-          <p class="section-description">Lab life.</p>
-          <div class="gallery-grid" id="fun-grid"></div>
-        </div>
-
-        <!-- Equipment Section -->
-        <div class="gallery-section" id="equipment-section" role="tabpanel" tabindex="0" aria-labelledby="equipment-tab">
-          <h2 class="section-title">Lab Equipment</h2>
-          <p class="section-description">We often host visitors. Please reach out if you are interested in isotopic analysis, microscopy, or sample preparation.</p>
-          <div class="gallery-grid" id="equipment-grid"></div>
-        </div>
-
-        <!-- Favorite Rocks Section -->
-        <div class="gallery-section" id="favorite_rocks-section" role="tabpanel" tabindex="0" aria-labelledby="favorite_rocks-tab">
-          <h2 class="section-title">Favorite Rocks</h2>
-          <p class="section-description">These are some of my favorites of all time.</p>
-          <div class="gallery-grid" id="favorite_rocks-grid"></div>
-        </div>
-
-        <!-- Sunrises Section -->
-        <div class="gallery-section" id="sunrises-section" role="tabpanel" tabindex="0" aria-labelledby="sunrises-tab">
-          <h2 class="section-title">Sunrises and Sunsets</h2>
-          <p class="section-description">Captured during field work.</p>
-          <div class="gallery-grid" id="sunrises-grid"></div>
-        </div>
+        <p class="section-description">
+          Instrumentation and spaces for clumped-isotope mass spectrometry, microscopy, and sample preparation.
+        </p>
+        <div class="gallery-grid" id="facilities-grid"></div>
       </div>
     </section>
 
@@ -625,13 +621,75 @@
       </div>
     </section>
 
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/gallery.jpg')" role="img" aria-label="Photo gallery banner image">
+        <div class="banner-inner"><h2>Gallery</h2></div>
+      </div>
+
+      <div class="gallery-nav" role="tablist" aria-label="Gallery category tabs">
+        <button class="gallery-nav-item active" data-section="field"    role="tab" aria-selected="true"  aria-controls="field-section">Field Work</button>
+        <button class="gallery-nav-item"        data-section="teaching" role="tab" aria-selected="false" aria-controls="teaching-section">Teaching</button>
+        <button class="gallery-nav-item"        data-section="outreach" role="tab" aria-selected="false" aria-controls="outreach-section">Outreach</button>
+        <button class="gallery-nav-item"        data-section="fun" role="tab" aria-selected="false" aria-controls="fun-section">Fun</button>
+        <button class="gallery-nav-item"        data-section="favorite_rocks" role="tab" aria-selected="false" aria-controls="favorite_rocks-section">Favorite Rocks</button>
+        <button class="gallery-nav-item"        data-section="sunrises" role="tab" aria-selected="false" aria-controls="sunrises-section">Sunrises &amp; Sunsets</button>
+      </div>
+
+      <div class="container">
+        <!-- Field Work Section -->
+        <div class="gallery-section active" id="field-section" role="tabpanel" tabindex="0" aria-labelledby="field-tab">
+          <h2 class="section-title">Field Work</h2>
+          <p class="section-description">Field sites that document pivotal intervals in Earth's history.</p>
+          <div class="gallery-grid" id="field-grid"></div>
+        </div>
+
+        <!-- Teaching Section -->
+        <div class="gallery-section" id="teaching-section" role="tabpanel" tabindex="0" aria-labelledby="teaching-tab">
+          <h2 class="section-title">Teaching</h2>
+          <p class="section-description"></p>
+          <div class="gallery-grid" id="teaching-grid"></div>
+        </div>
+
+        <!-- Outreach Section -->
+        <div class="gallery-section" id="outreach-section" role="tabpanel" tabindex="0" aria-labelledby="outreach-tab">
+          <h2 class="section-title">Outreach</h2>
+          <p class="section-description">Educational programs bringing research to local communities.</p>
+          <div class="gallery-grid" id="outreach-grid"></div>
+        </div>
+
+        <!-- Fun Section -->
+        <div class="gallery-section" id="fun-section" role="tabpanel" tabindex="0" aria-labelledby="fun-tab">
+          <h2 class="section-title">Fun</h2>
+          <p class="section-description">Lab life.</p>
+          <div class="gallery-grid" id="fun-grid"></div>
+        </div>
+
+        <!-- Favorite Rocks Section -->
+        <div class="gallery-section" id="favorite_rocks-section" role="tabpanel" tabindex="0" aria-labelledby="favorite_rocks-tab">
+          <h2 class="section-title">Favorite Rocks</h2>
+          <p class="section-description">These are some of my favorites of all time.</p>
+          <div class="gallery-grid" id="favorite_rocks-grid"></div>
+        </div>
+
+        <!-- Sunrises Section -->
+        <div class="gallery-section" id="sunrises-section" role="tabpanel" tabindex="0" aria-labelledby="sunrises-tab">
+          <h2 class="section-title">Sunrises and Sunsets</h2>
+          <p class="section-description">Captured during field work.</p>
+          <div class="gallery-grid" id="sunrises-grid"></div>
+        </div>
+      </div>
+    </section>
+
+
     <!-- Contact -->
     <section id="contact">
       <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/contact2.png')" role="img" aria-label="Contact banner image">
         <div class="banner-inner"><h2>Contact</h2></div>
       </div>
       <div class="container">
-        <p class="section-description">MIT EAPS • 1014 • Building 54 • 77 Massachusetts Avenue • Cambridge, MA 02139 • kdberg@mit.edu</p>
+        <p class="section-description">MIT EAPS • Building 54 • Room 1014 • 77 Massachusetts Avenue • Cambridge, MA 02139 • kdberg [at] mit.edu</p>
       </div>
     </section>
   </main>
@@ -639,6 +697,8 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image viewer">
     <button class="close" id="lightboxClose" aria-label="Close image viewer" type="button">&times;</button>
+    <button class="nav prev" id="lightboxPrev" aria-label="Previous image" type="button">‹</button>
+    <button class="nav next" id="lightboxNext" aria-label="Next image" type="button">›</button>
     <img id="lightbox-img" src="" alt="">
   </div>
 
@@ -681,7 +741,6 @@
       crosby_sicily: 'EAPS Departmental Field Trip to Sicily',
       crosby_newfoundland: 'EAPS Departmental Field Trip to Newfoundland',
       outreach: 'Outreach',
-      equipment: 'Lab Equipment',
       favorite_rocks: 'Favorite Rocks',
       fun: 'Fun',
       suns: 'Sunrises and Sunsets',
@@ -713,6 +772,8 @@
     async function renderGalleryFromData(categoryKey, containerId) {
       const container = document.getElementById(containerId);
       if (!container) return;
+
+	  const isPeople = (categoryKey === 'current_people' || categoryKey === 'former_people');
     
       const items = (window.GALLERY_DATA && window.GALLERY_DATA[categoryKey]) ? window.GALLERY_DATA[categoryKey] : [];
       if (!items.length) { 
@@ -740,7 +801,6 @@
         if (!filtered.length) continue;
     
         const label = window.SUBSECTION_LABELS[subKey] || subKey;
-        const isPeople = (categoryKey === 'current_people' || categoryKey === 'former_people');
     
         // Only render subsection headers for non-people categories, and never for the top-level key
         if (!isPeople && subKey !== categoryKey && label && label.trim()) {
@@ -787,16 +847,23 @@
       container.innerHTML = html;
     
       // Bind click + keyboard open
-      container.querySelectorAll('.gallery-item').forEach(card => {
-        card.addEventListener('click', () => openLightbox(card.getAttribute('data-src'), card));
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openLightbox(card.getAttribute('data-src'), card);
-          }
-        });
-      });
-    }
+        if (!isPeople) {
+          const cards = Array.from(container.querySelectorAll('.gallery-item'));
+          const list = cards.map(c => c.getAttribute('data-src'));
+          cards.forEach((card, idx) => {
+            function openAtIndex() {
+              openLightboxFromList(list, idx, card);
+            }
+            card.addEventListener('click', openAtIndex);
+            card.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openAtIndex();
+              }
+            });
+          });
+        }
+	}
 
     function handleMissingFormerPhotos() {
       const grid = document.getElementById('former-people-grid');
@@ -855,16 +922,37 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const slide = { list: [], index: -1 };
   let lastTrigger = null;
 
-  function openLightbox(imageSrc, triggerEl) {
-    lastTrigger = triggerEl || document.activeElement;
-    lightboxImg.src = imageSrc;
-    lightbox.setAttribute('aria-hidden', 'false');
-    lightbox.style.display = 'flex';
-    lightboxClose.focus();
-    document.addEventListener('keydown', onLightboxKey);
-  }
+    function setLightboxSrc() {
+      if (slide.index >= 0 && slide.index < slide.list.length) {
+        lightboxImg.src = slide.list[slide.index];
+      }
+    }
+    function go(delta) {
+      if (!slide.list.length) return;
+      slide.index = (slide.index + delta + slide.list.length) % slide.list.length;
+      setLightboxSrc();
+    }
+
+    function openLightboxFromList(list, startIndex, triggerEl) {
+      lastTrigger = triggerEl || document.activeElement;
+      slide.list = list || [];
+      slide.index = Math.max(0, Math.min(startIndex || 0, slide.list.length - 1));
+      setLightboxSrc();
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightbox.style.display = 'flex';
+      lightboxClose.focus();
+      document.addEventListener('keydown', onLightboxKey);
+    }
+    
+    // backward-compat: if something still calls openLightbox(src), make a 1-item list
+    function openLightbox(imageSrc, triggerEl) {
+      openLightboxFromList([imageSrc], 0, triggerEl);
+    }
 
   function closeLightbox() {
     lightbox.setAttribute('aria-hidden', 'true');
@@ -876,14 +964,19 @@
     }
   }
 
-  function onLightboxKey(e) {
-    if (e.key === 'Escape') closeLightbox();
-    // Simple focus trap: if focus leaves, bring back to close button
-    if (e.key === 'Tab') {
-      e.preventDefault();
-      lightboxClose.focus();
+    function onLightboxKey(e) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(+1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); go(-1); }
+      // Simple focus trap: if focus leaves, bring back to close button
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        lightboxClose.focus();
+      }
     }
-  }
+
+    lightboxPrev.addEventListener('click', () => go(-1));
+    lightboxNext.addEventListener('click', () => go(+1));
 
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
@@ -923,18 +1016,17 @@
 
 
   // Smooth in-page nav offset for sticky header
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const headerHeight = document.querySelector('.site-header').offsetHeight;
-        const bannerHeight = target.querySelector('.section-banner')?.offsetHeight || 0;
-        const targetPosition = target.offsetTop + bannerHeight;
-        window.scrollTo({ top: targetPosition - headerHeight, behavior: 'smooth' });
-      }
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerHeight = document.querySelector('.site-header').offsetHeight;
+          const targetPosition = target.offsetTop;
+          window.scrollTo({ top: targetPosition - headerHeight, behavior: 'smooth' });
+        }
+      });
     });
-  });
 
   // Publications controls (unchanged behavior)
   const btnAbbrev = document.getElementById('pubsAbbrev');
@@ -975,7 +1067,7 @@
     renderGalleryFromData('field',           'field-grid');
     renderGalleryFromData('teaching',        'teaching-grid');
     renderGalleryFromData('outreach',        'outreach-grid');
-    renderGalleryFromData('equipment',       'equipment-grid');
+    renderGalleryFromData('equipment',       'facilities-grid');
     renderGalleryFromData('suns',        'sunrises-grid');
     renderGalleryFromData('favorite_rocks',  'favorite_rocks-grid');
     renderGalleryFromData('fun',             'fun-grid');
@@ -1014,5 +1106,39 @@
   // Expose for debugging if needed
   window.openLightbox = openLightbox;
   </script>
+    <script>
+      // Retarget (almost) ALL links to open in a new tab — including links added later by JS.
+      // We keep in-page anchors (#...) and javascript: links opening in the same tab for site UX.
+      function retargetLinks(root = document) {
+        root.querySelectorAll('a[href]').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          const isHash = href.startsWith('#');
+          const isJs = href.toLowerCase().startsWith('javascript:');
+          if (isHash || isJs) return;  // keep smooth in-page nav working
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        });
+      }
+    
+      document.addEventListener('DOMContentLoaded', () => {
+        // 1) Initial sweep
+        retargetLinks();
+    
+        // 2) Watch for anything added later (e.g., publications rendered by JS)
+        const mo = new MutationObserver(mutations => {
+          for (const m of mutations) {
+            for (const node of m.addedNodes) {
+              if (node.nodeType !== 1) continue; // elements only
+              if (node.matches && node.matches('a[href]')) {
+                retargetLinks(node.parentNode || document);
+              } else {
+                retargetLinks(node);
+              }
+            }
+          }
+        });
+        mo.observe(document.body, { childList: true, subtree: true });
+      });
+    </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ content: `
     <!-- Overview -->
     <div class="research-overview">
       <p class="section-description">
-        In our group, we reconstruct ancient climates to understand how environmental change shaped the evolutionary history of macroscopic life. We focus on pivotal transitions—from the first animals to the expansion of seed plants—using carbonate rocks as archives of past climate and carbon cycle change. Our approach integrates fieldwork, petrography, and isotope geochemistry, especially clumped isotope thermometry, to distinguish original depositional signals from later alteration.
+        We reconstruct ancient climates to understand how environmental change shaped the evolutionary history of macroscopic life. We focus on pivotal transitions—from the first animals to the expansion of seed plants—using carbonate rocks as archives of past climate and carbon cycle change. Our approach integrates fieldwork, petrography, and isotope geochemistry, especially clumped isotope thermometry, to distinguish original depositional signals from later alteration.
       </p>
     </div>
 
@@ -47,8 +47,8 @@ content: `
             <div class="related-publications">
               <h4>Recent Publications:</h4>
             <ul>
-              <li>Macdonald, F.A., Renger, E., Tasistro-Hart, A., <em>et&nbsp;al.</em>, incl. <strong>Bergmann, K.D.</strong> (2025) Mantle-like Sr in a Sturtian cap carbonate (Oman). <em>Geology</em>.</li>
-              <li><strong>Mackey, T.J.</strong>, <strong>Jost, A.B.</strong>, Creveling, J.R., <strong>Bergmann, K.D.</strong> (2020) Low clumped-isotope temperatures in Cryogenian strata. <em>AGU Adv.</em>.</li>
+              <li>Macdonald, F.A., Renger, E., Tasistro-Hart, A., <em>et&nbsp;al.</em>, incl. <strong>Bergmann, K.D.</strong> (2025) Mantle-like Sr in a Sturtian cap carbonate (Oman). <em>Geology</em>.  <a href="https://pubs.geoscienceworld.org/gsa/geology/article/doi/10.1130/G53385.1/659183/Mantle-like-Sr-isotopes-in-a-Sturtian-cap">link</a>.</li>
+              <li><strong>Mackey, T.J.</strong>, <strong>Jost, A.B.</strong>, Creveling, J.R., <strong>Bergmann, K.D.</strong> (2020) Low clumped-isotope temperatures in Cryogenian strata. <em>AGU Adv.</em>. <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020AV000244">link</a>.</li>
             </ul>
             </div>
           </div>
