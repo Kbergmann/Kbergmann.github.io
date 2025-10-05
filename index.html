@@ -487,6 +487,59 @@
 
     .gallery-grid.no-captions .overlay { display: none !important; }
 
+	/* ---------- Mobile header & drawer ---------- */
+	.mobile-menu-btn {
+	  display: none;
+	  position: absolute;
+	  right: var(--pad);
+	  top: 14px;
+	  width: 42px; height: 42px;
+	  border-radius: 10px;
+	  border: 1px solid var(--line);
+	  background: rgba(0,0,0,.35);
+	  cursor: pointer;
+	}
+	.mobile-menu-btn .mm-line {
+	  display:block; height:2px; margin:7px 9px; background:#fff; border-radius:2px;
+	}
+	@media (max-width: 900px) {
+	  nav.nav { display:none; }     /* hide desktop nav on phones */
+	  .mobile-menu-btn { display:block; }
+	}
+	
+	/* Drawer shell */
+	.mobile-drawer-backdrop {
+	  position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1400;
+	}
+	.mobile-drawer {
+	  position: fixed; inset: 0 auto 0 0;
+	  width: min(86vw, 360px);
+	  transform: translateX(-102%);
+	  transition: transform .25s ease;
+	  background: #1a1a1a; border-right: 1px solid var(--line);
+	  z-index: 1500; padding: 18px 14px 24px;
+	}
+	.mobile-drawer[aria-hidden="false"] { transform: translateX(0); }
+	.mobile-drawer-close {
+	  position: absolute; top: 10px; right: 10px;
+	  font-size: 1.6rem; line-height: 1; background: transparent; color: #fff;
+	  border: 1px solid transparent; border-radius: 8px; padding: 4px 8px; cursor:pointer;
+	}
+	.mobile-drawer-nav { margin-top: 28px; }
+	.mobile-nav-list { list-style: none; margin: 0; padding: 0; }
+	.mobile-nav-list li { margin: 0 0 10px; }
+	.mobile-nav-list a {
+	  display:block; padding: 12px 12px;
+	  border: 1px solid #444; border-radius: 10px;
+	  color: #fff; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+	}
+	.mobile-nav-list a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+	
+	/* Reduce header padding on phones so it doesn’t eat space */
+	@media (max-width: 900px) {
+	  header.site-header { padding: 14px 0; }
+	}
+
   </style>
 </head>
 <body>
@@ -503,6 +556,24 @@
           </span>
         </a>
         <h1 class="sr-only">Bergmann Carbonate Research Laboratory</h1>
+
+		<!-- Mobile menu button -->
+		<button class="mobile-menu-btn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+		  <span class="mm-line" aria-hidden="true"></span>
+		  <span class="mm-line" aria-hidden="true"></span>
+		  <span class="mm-line" aria-hidden="true"></span>
+		</button>
+		
+		<!-- Offcanvas mobile drawer -->
+		<aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+		  <nav class="mobile-drawer-nav" role="navigation" aria-label="Mobile">
+			<!-- This UL will be populated by JS with the same items as the desktop nav -->
+			<ul class="mobile-nav-list"></ul>
+		  </nav>
+		  <button class="mobile-drawer-close" aria-label="Close menu">✕</button>
+		</aside>
+		<div class="mobile-drawer-backdrop" hidden></div>
+
       <nav aria-label="Main navigation" class="nav">
         <a href="#research">Research</a>
         <a href="#viewer">Isotope Data Viewer</a>
@@ -1140,5 +1211,7 @@
         mo.observe(document.body, { childList: true, subtree: true });
       });
     </script>
+
+	<script src="assets/js/mobile.site.js" defer></script>
 </body>
 </html>
