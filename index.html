@@ -141,17 +141,6 @@
       text-shadow: 0 2px 14px rgba(0,0,0,0.55);
       text-transform: uppercase;
     }
-    /* Reduce banner height on phones */
-    @media (max-width: 900px) {
-      .section-banner img {
-        height: 140px !important;  /* adjust value as desired (100–160px works well) */
-        object-fit: cover;         /* ensures image fills area without distortion */
-      }
-      .section-banner {
-        padding: 0;
-        margin: 0 auto;
-      }
-    }
     /* Content container */
     .container {
       max-width: var(--container);
@@ -220,6 +209,17 @@
       scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 12px);
     }
 
+	@media (max-width: 900px) {
+	  :root { --banner-h: 120px; }          /* try 100–140px to taste */
+	  .section-banner .banner-inner {
+		padding: 10px var(--pad) 12px;      /* tighter label padding on mobile */
+	  }
+	}
+	
+	@media (max-width: 900px) {
+	  .section-banner h2 { font-size: clamp(1rem, 4.2vw, 1.25rem); }
+	}
+	
 
     #gallery .gallery-nav {
       position: sticky;
