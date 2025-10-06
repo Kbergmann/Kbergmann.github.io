@@ -193,4 +193,101 @@
         closeMenu();
       });
     })();
+  // ----- 7) Mobile accordions: make each image banner toggle its section -----
+  (function () {
+    const mq = window.matchMedia('(max-width: 900px)');
+    const SECTION_SELECTOR = 'main section';
+    const BANNER_SEL = '.section-banner';
+
+    function getContentNodes(section) {
+      // Everything inside the section except the banner is considered collapsible content
+      const kids = Array.from(section.children);
+      return kids.filter(el => !el.matches(BANNER_SEL));
+    }
+
+    function collapse(section, setAria = true) {
+      const content = getContentNodes(section);
+      content.forEach(el => el.hidden = true);
+      if (setAria) {
+        const banner = section.querySelector(BANNER_SEL);
+        banner?.setAttribute('aria-expanded', 'false');
+      }
+      section.classList.add('is-collapsed');
+    }
+
+    function expand(section, setAria = true) {
+      const content = getContentNodes(section);
+      content.forEach(el => el.hidden = false);
+      if (setAria) {
+        const banner = section.querySelector(BANNER_SEL);
+        banner?.setAttribute('aria-expanded', 'true');
+      }
+      section.classList.remove('is-collapsed');
+    }
+
+    function wireBanner(section) {
+      if (section.dataset.accordionInit === '1') return;
+      const banner = section.querySelector(BANNER_SEL);
+      if (!banner) return;
+
+      // Accessibility + affordance
+      banner.tabIndex = 0;
+      banner.setAttribute('role', 'button');
+      banner.setAttribute('aria-expanded', 'false');
+      banner.style.cursor = 'pointer';
+
+      function toggle() {
+        if (section.classList.contains('is-collapsed')) expand(section);
+        else collapse(section);
+      }
+
+      banner.addEventListener('click', toggle);
+      banner.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+
+      section.dataset.accordionInit = '1';
+    }
+
+    function unwireBanner(section) {
+      const banner = section.querySelector(BANNER_SEL);
+      if (!banner) return;
+      banner.removeAttribute('role');
+      banner.removeAttribute('aria-expanded');
+      banner.style.cursor = '';
+      banner.tabIndex = -1;
+
+      // Remove our listeners by cloning (simple and safe)
+      const clone = banner.cloneNode(true);
+      banner.replaceWith(clone);
+
+      delete section.dataset.accordionInit;
+    }
+
+    function setModeMobile(on) {
+      const sections = Array.from(document.querySelectorAll(SECTION_SELECTOR));
+      if (on) {
+        // Initialize accordions and collapse by default
+        sections.forEach(sec => {
+          wireBanner(sec);
+          collapse(sec);
+        });
+      } else {
+        // Show everything and remove accordion behavior
+        sections.forEach(sec => {
+          expand(sec, /*setAria*/false);
+          unwireBanner(sec);
+        });
+      }
+    }
+
+    // Initial mode
+    setModeMobile(mq.matches);
+
+    // Respond to viewport changes
+    mq.addEventListener('change', (e) => setModeMobile(e.matches));
+  })();
 })();
