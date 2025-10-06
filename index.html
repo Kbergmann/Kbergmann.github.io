@@ -950,14 +950,15 @@
           }
         }
     
-        // Cards — now using filtered list only
-          <div class="gallery-item" tabindex="0" role="button" aria-label="Open image: ${escapeHtml(it.title || '')}" data-src="${it.src}">
-            <img src="${it.src}" alt="${escapeHtml(it.title || 'Gallery image')}" loading="lazy" decoding="async">
-            <div class="overlay">
-              <h3>${escapeHtml(it.title || '')}</h3>
-            </div>
-          </div>
-        `).join('');
+		// Cards — render immediately; let broken images self-remove
+		html += list.map(it => `
+		  <div class="gallery-item" tabindex="0" role="button" aria-label="Open image: ${escapeHtml(it.title || '')}" data-src="${it.src}">
+			<img src="${it.src}" alt="${escapeHtml(it.title || 'Gallery image')}" loading="lazy" decoding="async">
+			<div class="overlay">
+			  <h3>${escapeHtml(it.title || '')}</h3>
+			</div>
+		  </div>
+		`).join('');
       }
     
       // If after filtering every subsection is empty, hide the whole section
