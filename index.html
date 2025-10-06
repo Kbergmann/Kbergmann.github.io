@@ -546,10 +546,52 @@
 	  border: 1px solid #888;        /* a bit brighter for contrast */
 	  color: #fff;
 	}
+
+	.mobile-drawer .mobile-nav-list a {
+	  background: #222 !important;   /* opaque */
+	  border-color: #888 !important;
+	  color: #fff !important;
+	}
 		
 	/* Reduce header padding on phones so it doesn’t eat space */
 	@media (max-width: 900px) {
 	  header.site-header { padding: 14px 0; }
+	}
+
+	/* --- Gallery mobile menu --- */
+	.gallery-mobile-controls { display: none; padding: 12px var(--pad) 0; }
+	.gallery-menu-btn {
+	  display: inline-flex; align-items: center; gap: 8px;
+	  padding: 10px 14px; border-radius: 10px;
+	  border: 1px solid #666; background: #222; color: #fff; cursor: pointer;
+	  font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+	}
+	.gallery-menu-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+	
+	.gallery-menu-backdrop {
+	  position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1400;
+	}
+	.gallery-menu {
+	  position: fixed; left: var(--pad); right: var(--pad);
+	  top: calc(var(--header-h) + 10px);
+	  z-index: 1500; background: #121212; border: 1px solid #444;
+	  border-radius: 12px; padding: 10px; box-shadow: 0 14px 40px rgba(0,0,0,.55);
+	}
+	.gallery-menu[hidden] { display: none !important; }
+	.gallery-menu-list { list-style: none; margin: 0; padding: 4px; display: grid; gap: 10px; }
+	.gallery-menu-list a {
+	  display: block; padding: 12px; border-radius: 10px;
+	  background: #222; border: 1px solid #666; color: #fff; text-decoration: none;
+	  font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+	}
+	.gallery-menu-list a:hover, .gallery-menu-list a:focus-visible {
+	  background: var(--accent); border-color: var(--accent); color: #fff; outline: none;
+	}
+	
+	/* On mobile: hide the wide sticky tabs, show the compact button */
+	@media (max-width: 900px) {
+	  #gallery .gallery-nav { display: none; }
+	  .gallery-mobile-controls { display: block; }
 	}
 
   </style>
@@ -710,6 +752,18 @@
 	  <div class="section-banner" style="background-image:url('assets/gallery/aquarium_living/gallery.jpg')" role="img" aria-label="Photo gallery banner image">
 		<div class="banner-inner"><h2>Gallery</h2></div>
 	  </div>
+
+		<div class="gallery-mobile-controls">
+		  <button class="gallery-menu-btn" aria-expanded="false" aria-controls="galleryMenu">
+			Gallery Sections
+			<span aria-hidden="true">▾</span>
+		  </button>
+		</div>
+		<div class="gallery-menu-backdrop" hidden></div>
+		<div id="galleryMenu" class="gallery-menu" hidden role="dialog" aria-modal="true" aria-labelledby="galleryMenuLabel">
+		  <h3 id="galleryMenuLabel" class="sr-only">Gallery Sections</h3>
+		  <ul class="gallery-menu-list" role="menu"></ul>
+		</div>
 
 	  <div class="gallery-nav" role="tablist" aria-label="Gallery category tabs">
 		<button class="gallery-nav-item active" data-section="field"	role="tab" aria-selected="true"	 aria-controls="field-section">Field Work</button>

@@ -125,4 +125,72 @@
       }, 0);
     });
   }
+
+    // ---- Mobile gallery hamburger (dropdown) ----
+    (function () {
+      const btn = document.querySelector('.gallery-menu-btn');
+      const menu = document.getElementById('galleryMenu');
+      const list = document.querySelector('.gallery-menu-list');
+      const backdrop = document.querySelector('.gallery-menu-backdrop');
+      const sourceBtns = Array.from(document.querySelectorAll('#gallery .gallery-nav .gallery-nav-item'));
+    
+      if (!btn || !menu || !list || !sourceBtns.length) return;
+    
+      // Build list from existing tabs
+      list.innerHTML = sourceBtns.map(b => {
+        const label = b.textContent.trim();
+        const key = b.dataset.section;
+        return `<li><a href="#" role="menuitem" data-section="${key}">${label}</a></li>`;
+      }).join('');
+    
+      function openMenu() {
+        btn.setAttribute('aria-expanded', 'true');
+        menu.hidden = false; backdrop.hidden = false;
+        // focus first item
+        const first = menu.querySelector('a[role="menuitem"]');
+        first && first.focus();
+      }
+      function closeMenu() {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.hidden = true; backdrop.hidden = true;
+        btn.focus();
+      }
+
+        function openMenu() {
+          btn.setAttribute('aria-expanded', 'true');
+          menu.hidden = false; backdrop.hidden = false;
+          document.documentElement.classList.add('no-scroll');   // add this
+          const first = menu.querySelector('a[role="menuitem"]'); first && first.focus();
+        }
+        function closeMenu() {
+          btn.setAttribute('aria-expanded', 'false');
+          menu.hidden = true; backdrop.hidden = true;
+          document.documentElement.classList.remove('no-scroll'); // add this
+          btn.focus();
+        }
+    
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        if (open) closeMenu(); else openMenu();
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') closeMenu();
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && btn.getAttribute('aria-expanded') === 'true') closeMenu();
+      });
+    
+      // Activate section when an item is clicked (delegated)
+      list.addEventListener('click', (e) => {
+        const a = e.target.closest('a[role="menuitem"]');
+        if (!a) return;
+        e.preventDefault();
+        const key = a.getAttribute('data-section');
+        // trigger the original tab’s click so all existing logic runs (including scroll fixes)
+        const orig = document.querySelector(`#gallery .gallery-nav .gallery-nav-item[data-section="${key}"]`);
+        if (orig) orig.click();
+        closeMenu();
+      });
+    })();
 })();

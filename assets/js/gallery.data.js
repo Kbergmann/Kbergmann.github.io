@@ -433,7 +433,7 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/people/former/fran_meyer.jpg',                 title: 'Fran Meyer',          desc: 'Research assistant',          subsection: 'former_people', location: 'Penn State University', },
     { src: 'assets/gallery/people/former/juliana_drozd.jpg',                 title: 'Juliana Drozd',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'Penn State University', },
     { src: 'assets/gallery/people/former/ollie_laub.jpg',                 title: 'Ollie Laub',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'Utah State University', },
-    { src: 'assets/gallery/people/former/julia_clarke.jpg',                 title: 'Julia Clarke',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'University of Arizona', },
+    { src: 'assets/gallery/people/former/julia_clarke.jpg',                 title: 'Julia Clarke',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'Arizona State University', },
     { src: 'assets/gallery/people/former/sabrina_kahn.jpg',                 title: 'Sabrina Kahn',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'Johns Hopkins', },
     { src: 'assets/gallery/people/former/andrew_cummings.jpg',                 title: 'Andrew Cummings',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: '', },
     { src: 'assets/gallery/people/former/zoe_levitt.jpg',                 title: 'Zoe Levitt',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: '', },
