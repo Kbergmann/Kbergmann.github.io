@@ -207,17 +207,30 @@
 
     function collapse(section, setAria = true) {
       const content = getContentNodes(section);
-      content.forEach(el => el.hidden = true);
+      content.forEach(el => {
+        if (!el.dataset.accordionHidden) {               // mark only once
+          el.dataset.accordionWasHidden = el.hidden ? '1' : '0';
+          el.dataset.accordionHidden = '1';
+        }
+        el.hidden = true;
+      });
       if (setAria) {
         const banner = section.querySelector(BANNER_SEL);
         banner?.setAttribute('aria-expanded', 'false');
       }
       section.classList.add('is-collapsed');
     }
-
+    
     function expand(section, setAria = true) {
       const content = getContentNodes(section);
-      content.forEach(el => el.hidden = false);
+      content.forEach(el => {
+        if (el.dataset.accordionHidden === '1') {
+          // restore to original state
+          el.hidden = el.dataset.accordionWasHidden === '1';
+          delete el.dataset.accordionHidden;
+          delete el.dataset.accordionWasHidden;
+        }
+      });
       if (setAria) {
         const banner = section.querySelector(BANNER_SEL);
         banner?.setAttribute('aria-expanded', 'true');
