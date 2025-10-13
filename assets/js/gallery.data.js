@@ -440,7 +440,7 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/people/former/les_armstrong.jpg',                 title: 'Les Armstrong',          desc: 'Masters Student',          subsection: 'former_people', location: '', },
     { src: 'assets/gallery/people/former/edgar_paca.jpg',                 title: 'Edgar Paca',          desc: 'Masters Student',          subsection: 'former_people', location: '', },
     { src: 'assets/gallery/people/former/sarah_coyle.jpg',                 title: 'Sarah Coyle',          desc: 'Masters Student',          subsection: 'former_people', location: '', },
-    { src: 'assets/gallery/people/former/markey_freudenburg_puricelli.jpg',                 title: 'Markey Freudenburg-Puricelli',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'University of Cambridge', },
+    { src: 'assets/gallery/people/former/markey_freudenberg_puricelli.jpg',                 title: 'Markey Freudenburg-Puricelli',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: 'University of Cambridge', },
     { src: 'assets/gallery/people/former/alexandra_chua.jpg',                 title: 'Alexandra Chua',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: '', },
     { src: 'assets/gallery/people/former/sarah_lohmar.jpg',                 title: 'Sarah Lohmar',          desc: 'Undergraduate Researcher',          subsection: 'former_people', location: '', },
     { src: 'assets/gallery/people/former/andrew_johnson.jpg', title: 'Andrew Johnson', desc: 'Undergraduate Researcher', subsection: 'former_people', location: '' },
