@@ -411,7 +411,7 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/people/current/diana_dumit.jpg',  title: 'Diana Dumit',     desc: 'Postdoctoral Scholar; Summons Lab',        subsection: 'current_people', location: 'MIT', },
     { src: 'assets/gallery/people/current/fiona_anstey.jpg',         title: 'Fiona Anstey',    desc: 'Graduate Student',                         subsection: 'current_people', location: 'MIT', },
     { src: 'assets/gallery/people/current/claire_hayhow.jpg',         title: 'Claire Hayhow',   desc: 'Graduate Student',                         subsection: 'current_people', location: 'MIT', },
-    { src: 'assets/gallery/people/current/madi_whittmer.jpg',  title: 'Madi Whittmer',    desc: 'Graduate Student; McGee Lab',              subsection: 'current_people', location: 'MIT', },
+    { src: 'assets/gallery/people/current/madi_whittmer.jpg',  title: 'Madi Wittmer',    desc: 'Graduate Student; McGee Lab',              subsection: 'current_people', location: 'MIT', },
   ],
 
   /* ------------------------ FORMER PEOPLE ------------------------ */
