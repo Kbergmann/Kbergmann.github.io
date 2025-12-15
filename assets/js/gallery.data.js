@@ -239,11 +239,13 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/teaching/deaps_2024/PXL_20240824_152210712.jpg', title: '', desc: 'DEAPS 2024', subsection: 'deaps', location: '', },
     { src: 'assets/gallery/teaching/deaps_2024/PXL_20240824_160638094.jpg', title: '', desc: 'DEAPS 2024', subsection: 'deaps', location: '', },
 
+/*
     { src: 'assets/gallery/teaching/geobio/20180629_140534.jpg', title: '', desc: '', subsection: 'teaching_geobio', location: '', },
     { src: 'assets/gallery/teaching/geobio/20180629_143605.jpg', title: '', desc: '', subsection: 'teaching_geobio', location: '', },
     { src: 'assets/gallery/teaching/geobio/20180629_140553.jpg', title: '', desc: '', subsection: 'teaching_geobio', location: '', },
     { src: 'assets/gallery/teaching/geobio/20180630_141322.jpg', title: '', desc: '', subsection: 'teaching_geobio', location: '', },
     { src: 'assets/gallery/teaching/geobio/20180701_164333.jpg', title: '', desc: '', subsection: 'teaching_geobio', location: '', },
+*/
 
     { src: 'assets/gallery/teaching/deaps_2025/PXL_20250820_162936788.MP.jpg', title: '', desc: 'DEAPS 2025', subsection: 'deaps', location: '', },
     { src: 'assets/gallery/teaching/deaps_2025/PXL_20250820_161230802.jpg', title: '', desc: 'DEAPS 2025', subsection: 'deaps', location: '', },
@@ -273,6 +275,7 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/teaching/crosby_sicily/IMG_0548.jpg', title: '', desc: '', subsection: 'teaching_crosby_sicily', location: '', },
     { src: 'assets/gallery/teaching/crosby_sicily/20230602_065809.jpg', title: '', desc: '', subsection: 'teaching_crosby_sicily', location: '', },
 
+/*
     { src: 'assets/gallery/teaching/terrascope/PXL_20250326_180732297.jpg', title: '', desc: '', subsection: 'teaching_terrascope', location: '', },
     { src: 'assets/gallery/teaching/terrascope/PXL_20250324_221939086.MP.jpg', title: '', desc: '', subsection: 'teaching_terrascope', location: '', },
     { src: 'assets/gallery/teaching/terrascope/PXL_20250323_174202407.jpg', title: '', desc: '', subsection: 'teaching_terrascope', location: '', },
@@ -290,6 +293,7 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/teaching/terrascope/PXL_20250328_184510881.jpg', title: '', desc: '', subsection: 'teaching_terrascope', location: '', },
     { src: 'assets/gallery/teaching/terrascope/PXL_20250323_183843875.jpg', title: '', desc: '', subsection: 'teaching_terrascope', location: '', },
     { src: 'assets/gallery/teaching/terrascope/PXL_20250323_163648515.jpg', title: '', desc: '', subsection: 'teaching_terrascope', location: '', },
+*/
 
     { src: 'assets/gallery/teaching/crosby_newfoundland/IMG_1627.CR2.jpg', title: '', desc: '', subsection: 'teaching_crosby_newfoundland', location: '', },
     { src: 'assets/gallery/teaching/crosby_newfoundland/IMG_1702.CR2.jpg', title: '', desc: '', subsection: 'teaching_crosby_newfoundland', location: '', },
@@ -341,11 +345,13 @@ window.GALLERY_DATA = {
     { src: 'assets/gallery/teaching/12_12/PXL_20250403_195804424.jpg', title: '', desc: '', subsection: 'teaching_12_12', location: '', },
     { src: 'assets/gallery/teaching/12_12/PXL_20250403_200238306.MP.jpg', title: '', desc: '', subsection: 'teaching_12_12', location: '', },
 
+/*
     { src: 'assets/gallery/teaching/tectonics/PXL_20240928_214924550.MP.jpg', title: '', desc: '', subsection: 'teaching_tectonics', location: '', },
     { src: 'assets/gallery/teaching/tectonics/PXL_20240928_170739175.MP.jpg', title: '', desc: '', subsection: 'teaching_tectonics', location: '', },
     { src: 'assets/gallery/teaching/tectonics/IMG_0868.HEIC', title: '', desc: '', subsection: 'teaching_tectonics', location: '', },
     { src: 'assets/gallery/teaching/tectonics/PXL_20240929_141133414.MP.jpg', title: '', desc: '', subsection: 'teaching_tectonics', location: '', },
     { src: 'assets/gallery/teaching/tectonics/PXL_20240928_162956690.jpg', title: '', desc: '', subsection: 'teaching_tectonics', location: '', },
+*/
   ],
 
   /* --------------------------- FUN -------------------------- */
