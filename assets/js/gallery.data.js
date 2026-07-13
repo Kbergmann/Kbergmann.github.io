@@ -20,6 +20,7 @@ window.SUBSECTION_LABELS = Object.assign(window.SUBSECTION_LABELS || {}, {
   equipment: 'Lab Equipment',
   favorite_rocks: 'Favorite Rocks',
   fun: 'Fun',
+  ice_cream: 'Ice Cream',
   suns: 'Sunrises and Sunsets',
   current_people: '',
   former_people: '',
