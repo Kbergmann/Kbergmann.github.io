@@ -695,7 +695,7 @@
       </div>
       <div class="container">
         <p class="section-description">
-          Instrumentation and spaces for clumped-isotope mass spectrometry, microscopy, and sample preparation.
+          Instrumentation and spaces for clumped-isotope mass spectrometry, microscopy, and sample preparation. Please reach out to kdberg [at] mit.edu with inquires about analyses.
         </p>
         <div class="gallery-grid" id="facilities-grid"></div>
       </div>
@@ -798,6 +798,7 @@
         <button class="gallery-nav-item"        data-section="outreach" role="tab" aria-selected="false" aria-controls="outreach-section">Outreach</button>
         <button class="gallery-nav-item"        data-section="fun" role="tab" aria-selected="false" aria-controls="fun-section">Fun</button>
         <button class="gallery-nav-item"        data-section="favorite_rocks" role="tab" aria-selected="false" aria-controls="favorite_rocks-section">Favorite Rocks</button>
+        <button class="gallery-nav-item"        data-section="ice_cream" role="tab" aria-selected="false" aria-controls="ice_cream-section">Ice Cream</button>
         <button class="gallery-nav-item"        data-section="sunrises" role="tab" aria-selected="false" aria-controls="sunrises-section">Sunrises &amp; Sunsets</button>
       </div>
 
@@ -835,6 +836,13 @@
           <h2 class="section-title">Favorite Rocks</h2>
           <p class="section-description">These are some of my favorites of all time.</p>
           <div class="gallery-grid" id="favorite_rocks-grid"></div>
+        </div>
+
+        <!-- Ice Cream Section -->
+        <div class="gallery-section" id="ice_cream-section" role="tabpanel" tabindex="0" aria-labelledby="ice_cream-tab">
+          <h2 class="section-title">Ice Cream</h2>
+          <p class="section-description"></p>
+          <div class="gallery-grid" id="ice_cream-grid"></div>
         </div>
 
         <!-- Sunrises Section -->
@@ -1238,6 +1246,7 @@
     renderGalleryFromData('equipment',       'facilities-grid');
     renderGalleryFromData('suns',        'sunrises-grid');
     renderGalleryFromData('favorite_rocks',  'favorite_rocks-grid');
+    renderGalleryFromData('ice_cream',       'ice_cream-grid');
     renderGalleryFromData('fun',             'fun-grid');
     renderGalleryFromData('current_people',  'current-people-grid');
     renderGalleryFromData('former_people',   'former-people-grid');
