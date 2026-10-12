@@ -459,14 +459,14 @@ window.GALLERY_DATA = {
   former_people: [
     // Matched first 10 names to 10 images in given order
     { src: 'assets/gallery/people/former/najmeh_saad.jpg',          title: 'Najmeh Etemaad Saad', desc: 'Visiting professor',          subsection: 'former_people', location: '', },
-    { src: 'assets/gallery/people/current/diana_dumit.jpg',  title: 'Diana Dumit',     desc: 'Postdoctoral Scholar; Summons Lab',        subsection: 'current_people', location: 'MIT', },
+    { src: 'assets/gallery/people/former/diana_dumit.jpg',  title: 'Diana Dumit',     desc: 'Postdoctoral Scholar; Summons Lab',        subsection: 'current_people', location: 'MIT', },
     { src: 'assets/gallery/people/former/tyler_mackey.jpg',          title: 'Tyler Mackey',        desc: 'Postdoctoral Scholar',        subsection: 'former_people', location: 'University of New Mexico', },
     { src: 'assets/gallery/people/former/athena_eyster.jpg',                 title: 'Athena Eyster',       desc: 'Postdoctoral Scholar',        subsection: 'former_people', location: 'Tufts University', },
     { src: 'assets/gallery/people/former/noah_anderson.jpg',          title: 'Noah Anderson',       desc: 'Graduate Student',            subsection: 'former_people', location: 'Cascade Climate', },
     { src: 'assets/gallery/people/former/julia_wilcots.jpg',                 title: 'Julia Wilcots',       desc: 'Graduate Student',            subsection: 'former_people', location: 'University of Minnesota', },
     { src: 'assets/gallery/people/former/marjorie_cantine.jpg',          title: 'Marjorie Cantine',    desc: 'Graduate Student',            subsection: 'former_people', location: 'University of Washington', },
     { src: 'assets/gallery/people/former/sam_goldberg.jpg',   title: 'Sam Goldberg',        desc: 'Graduate Student; Perron Lab',subsection: 'former_people', location: 'RSMAS, University of Miami', },
-    { src: 'assets/gallery/people/current/peter_bokulich.jpg',         title: 'Peter Bokulich',  desc: 'Science Writer',                           subsection: 'current_people', location: 'MIT', },
+    { src: 'assets/gallery/people/former/peter_bokulich.jpg',         title: 'Peter Bokulich',  desc: 'Science Writer',                           subsection: 'current_people', location: 'MIT', },
     { src: 'assets/gallery/people/former/jack_payette.jpg',                 title: 'Jack Payette',        desc: 'Graduate Student; Fournier Lab', subsection: 'former_people', location: '', },
     { src: 'assets/gallery/people/former/jocelyn_reahl.jpg',          title: 'Jocelyn Reahl',         desc: 'Undergraduate Researcher',subsection: 'former_people', location: 'Univeristy of Colorado, Boulder', },
     { src: 'assets/gallery/people/former/nicole_haseley.jpg',                 title: 'Nicole Haseley',          desc: 'Research assistant',          subsection: 'former_people', location: '', },
